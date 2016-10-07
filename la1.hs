@@ -9,7 +9,7 @@ printBar xs = [n | x <- [1 .. length xs], let n = '*']
 
 -- Define a function called sin’ which approximates sin(x) using the approximation on the next line. The first argument should be the value of x and the second argument should be the number of terms in the approximation. The output should be the resulting value. Note that this will break with a large number of terms because the Double type can’t hold very large factorial values.
 -- sin(x) = x – x^3 /3! + x^5 /5! – x^7 /7! + x^9 /9! - ...
-sin' x y = sum [((x^n) / ({-product [1..n]-}7)) | n <- [1 .. y], odd n] -- this dont work
+sin' x y = sum [((x^n) / (product [1..n])) - ((x^(n + 2)) / (product [1.. n + 2]))  | n <- [1 .. y * 4], n `mod` 4 == 1]
 --                          ^ this factorial breaks the function, not sure why, something about print
                         
 -- Define a function called toAstro which converts a month and day to the corresponding astrological sign. The inputs should be the month and day as Ints, and the output should correspond to the Signs in the following table. Assume that all months have 31 days, for the sake of this function. That is, months from 1-12 are valid and days from 1-31 are valid for every month.
