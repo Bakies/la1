@@ -1,0 +1,209 @@
+Score: 94
+
+missing validation check for toAstro
+
+removeElems:
+  removeElems 8 []
+  removeElems 8 [8, 8]
+  removeElems 8 [6]
+  removeElems 'c' ['c', 'h', 'e', 'c', 'k']
+  removeElems 'c' ['h', 'e', 'k', 'c', 'c']
+
+Finished in 0.0022 seconds
+5 examples, 0 failures
+
+longerThan:
+  longerThan 3 []
+  longerThan 3 [[1], [2], [3]]
+  longerThan 0 [[], [1], [1, 2], [1, 2, 3]]
+  longerThan 1 [[1], [1, 2], [1, 2, 3]]
+  longerThan 2 [['y', 'e', 'a', 'h'], ['y', 'e', 's'], ['n', 'o']]
+
+Finished in 0.0030 seconds
+5 examples, 0 failures
+
+printBar:
+  printBar []
+  printBar [1..10]
+  printBar "****"
+  printBar [(1,2,5), (3,6,1), (0,0,0)]
+
+Finished in 0.0014 seconds
+4 examples, 0 failures
+
+toAstro:
+  toAstro 1 1
+  toAstro 40 40 FAILED [1]
+  toAstro 10 30 FAILED [2]
+  toAstro 3 6
+
+Failures:
+
+  ../la1e_test.hs:21: 
+  1) toAstro: toAstro 40 40
+       uncaught exception: PatternMatchFail (LA1.hs:(17,1)-(29,74): Non-exhaustive patterns in function toAstro
+       )
+
+  ../la1e_test.hs:25: 
+  2) toAstro: toAstro 10 30
+       expected: "Scorpio"
+        but got: "Scorpia"
+
+Randomized with seed 237297492
+
+Finished in 0.0060 seconds
+4 examples, 2 failures
+
+
+-----------WARNING AND ERROR OUTPUTS BELOW-----------
+
+
+LA1.hs:9:55: warning: [-Wtabs]
+    Tab character found here, and in 12 further locations.
+    Please use spaces instead.
+
+../la1a_test.hs:2:1: warning: [-Wtabs]
+    Tab character found here.
+    Please use spaces instead.
+
+LA1.hs:9:55: warning: [-Wtabs]
+    Tab character found here, and in 12 further locations.
+    Please use spaces instead.
+
+../la1b_test.hs:2:1: warning: [-Wtabs]
+    Tab character found here.
+    Please use spaces instead.
+
+LA1.hs:9:55: warning: [-Wtabs]
+    Tab character found here, and in 12 further locations.
+    Please use spaces instead.
+
+../la1c_test.hs:2:1: warning: [-Wtabs]
+    Tab character found here.
+    Please use spaces instead.
+
+LA1.hs:9:55: warning: [-Wtabs]
+    Tab character found here, and in 12 further locations.
+    Please use spaces instead.
+
+../la1d_test.hs:19:7: error:
+    • Ambiguous type variable ‘a0’ arising from a use of ‘sin'’
+      prevents the constraint ‘(Fractional a0)’ from being solved.
+      Probable fix: use a type annotation to specify what ‘a0’ should be.
+      These potential instances exist:
+        instance Fractional Double -- Defined in ‘GHC.Float’
+        instance Fractional Float -- Defined in ‘GHC.Float’
+        ...plus three instances involving out-of-scope types
+        (use -fprint-potential-instances to see them all)
+    • In the first argument of ‘shouldBe’, namely ‘sin' 0 4’
+      In the second argument of ‘($)’, namely ‘sin' 0 4 `shouldBe` 0.0’
+      In a stmt of a 'do' block: it "sin' 0 1" $ sin' 0 4 `shouldBe` 0.0
+
+../la1d_test.hs:19:7: error:
+    • Ambiguous type variable ‘a0’ arising from a use of ‘shouldBe’
+      prevents the constraint ‘(Eq a0)’ from being solved.
+      Probable fix: use a type annotation to specify what ‘a0’ should be.
+      These potential instances exist:
+        instance (Eq a, Eq b) => Eq (Either a b)
+          -- Defined in ‘Data.Either’
+        instance Eq Ordering -- Defined in ‘GHC.Classes’
+        instance Eq Integer
+          -- Defined in ‘integer-gmp-1.0.0.1:GHC.Integer.Type’
+        ...plus 23 others
+        ...plus 56 instances involving out-of-scope types
+        (use -fprint-potential-instances to see them all)
+    • In the second argument of ‘($)’, namely ‘sin' 0 4 `shouldBe` 0.0’
+      In a stmt of a 'do' block: it "sin' 0 1" $ sin' 0 4 `shouldBe` 0.0
+      In the second argument of ‘($)’, namely
+        ‘do { it "sin' 0 1" $ sin' 0 4 `shouldBe` 0.0;
+              it "sin' (pi/6) 15"
+              $ sin' 0.52360 15 `shouldSatisfy` (inRange 0.4995 0.5005);
+              it "sin' pi/2 20"
+              $ sin' 1.570796 20 `shouldSatisfy` (inRange 0.9995 1.0005);
+              it "sin' 1 1" $ sin' 1 1 `shouldBe` 1.0;
+              .... }’
+
+../la1d_test.hs:19:12: error:
+    • Ambiguous type variable ‘a0’ arising from the literal ‘0’
+      prevents the constraint ‘(Num a0)’ from being solved.
+      Probable fix: use a type annotation to specify what ‘a0’ should be.
+      These potential instances exist:
+        instance Num Integer -- Defined in ‘GHC.Num’
+        instance Num Double -- Defined in ‘GHC.Float’
+        instance Num Float -- Defined in ‘GHC.Float’
+        ...plus two others
+        ...plus six instances involving out-of-scope types
+        (use -fprint-potential-instances to see them all)
+    • In the first argument of ‘sin'’, namely ‘0’
+      In the first argument of ‘shouldBe’, namely ‘sin' 0 4’
+      In the second argument of ‘($)’, namely ‘sin' 0 4 `shouldBe` 0.0’
+
+../la1d_test.hs:22:7: error:
+    • No instance for (Integral Double) arising from a use of ‘sin'’
+    • In the first argument of ‘shouldSatisfy’, namely
+        ‘sin' 0.52360 15’
+      In the second argument of ‘($)’, namely
+        ‘sin' 0.52360 15 `shouldSatisfy` (inRange 0.4995 0.5005)’
+      In a stmt of a 'do' block:
+        it "sin' (pi/6) 15"
+        $ sin' 0.52360 15 `shouldSatisfy` (inRange 0.4995 0.5005)
+
+../la1d_test.hs:28:7: error:
+    • Ambiguous type variable ‘a1’ arising from a use of ‘sin'’
+      prevents the constraint ‘(Fractional a1)’ from being solved.
+      Probable fix: use a type annotation to specify what ‘a1’ should be.
+      These potential instances exist:
+        instance Fractional Double -- Defined in ‘GHC.Float’
+        instance Fractional Float -- Defined in ‘GHC.Float’
+        ...plus three instances involving out-of-scope types
+        (use -fprint-potential-instances to see them all)
+    • In the first argument of ‘shouldBe’, namely ‘sin' 1 1’
+      In the second argument of ‘($)’, namely ‘sin' 1 1 `shouldBe` 1.0’
+      In a stmt of a 'do' block: it "sin' 1 1" $ sin' 1 1 `shouldBe` 1.0
+
+../la1d_test.hs:28:7: error:
+    • Ambiguous type variable ‘a1’ arising from a use of ‘shouldBe’
+      prevents the constraint ‘(Eq a1)’ from being solved.
+      Probable fix: use a type annotation to specify what ‘a1’ should be.
+      These potential instances exist:
+        instance (Eq a, Eq b) => Eq (Either a b)
+          -- Defined in ‘Data.Either’
+        instance Eq Ordering -- Defined in ‘GHC.Classes’
+        instance Eq Integer
+          -- Defined in ‘integer-gmp-1.0.0.1:GHC.Integer.Type’
+        ...plus 23 others
+        ...plus 56 instances involving out-of-scope types
+        (use -fprint-potential-instances to see them all)
+    • In the second argument of ‘($)’, namely ‘sin' 1 1 `shouldBe` 1.0’
+      In a stmt of a 'do' block: it "sin' 1 1" $ sin' 1 1 `shouldBe` 1.0
+      In the second argument of ‘($)’, namely
+        ‘do { it "sin' 0 1" $ sin' 0 4 `shouldBe` 0.0;
+              it "sin' (pi/6) 15"
+              $ sin' 0.52360 15 `shouldSatisfy` (inRange 0.4995 0.5005);
+              it "sin' pi/2 20"
+              $ sin' 1.570796 20 `shouldSatisfy` (inRange 0.9995 1.0005);
+              it "sin' 1 1" $ sin' 1 1 `shouldBe` 1.0;
+              .... }’
+
+../la1d_test.hs:28:12: error:
+    • Ambiguous type variable ‘a1’ arising from the literal ‘1’
+      prevents the constraint ‘(Num a1)’ from being solved.
+      Probable fix: use a type annotation to specify what ‘a1’ should be.
+      These potential instances exist:
+        instance Num Integer -- Defined in ‘GHC.Num’
+        instance Num Double -- Defined in ‘GHC.Float’
+        instance Num Float -- Defined in ‘GHC.Float’
+        ...plus two others
+        ...plus six instances involving out-of-scope types
+        (use -fprint-potential-instances to see them all)
+    • In the first argument of ‘sin'’, namely ‘1’
+      In the first argument of ‘shouldBe’, namely ‘sin' 1 1’
+      In the second argument of ‘($)’, namely ‘sin' 1 1 `shouldBe` 1.0’
+
+LA1.hs:9:55: warning: [-Wtabs]
+    Tab character found here, and in 12 further locations.
+    Please use spaces instead.
+
+../la1e_test.hs:2:1: warning: [-Wtabs]
+    Tab character found here.
+    Please use spaces instead.
